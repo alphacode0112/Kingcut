@@ -1,680 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Cut | Premium Barber Shop</title>
 
-  <title>King Cut | Premium Barber Shop</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#080808;color:white;line-height:1.6;overflow-x:hidden}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 6%;background:rgba(0,0,0,.94);backdrop-filter:blur(10px);border-bottom:1px solid #d4af37;display:flex;justify-content:space-between;align-items:center}
 
-    html {
-      scroll-behavior: smooth;
-    }
+.logo{display:flex;align-items:center;gap:10px;color:#d4af37;font-size:23px;font-weight:900;letter-spacing:2px}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #080808;
-      color: white;
-      line-height: 1.6;
-    }
+.logo-mark{width:38px;height:38px;border:2px solid #d4af37;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:18px;position:relative}
 
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 18px 25px;
-      background: rgba(0, 0, 0, 0.95);
-      border-bottom: 1px solid #d4af37;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.logo-mark:after{content:"";position:absolute;inset:4px;border:1px solid #d4af37;border-radius:50%}
 
-    .logo {
-      color: #d4af37;
-      font-size: 24px;
-      font-weight: bold;
-    }
+nav{display:flex;align-items:center}
 
-    nav {
-      display: flex;
-      align-items: center;
-    }
+nav a{color:white;text-decoration:none;margin-left:24px;font-size:14px;transition:.3s}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 14px;
-    }
+nav a:hover{color:#d4af37}
 
-    nav a:hover {
-      color: #d4af37;
-    }
+.menu-btn{display:none;background:none;border:none;color:#d4af37;font-size:30px;cursor:pointer}
 
-    /* MOBILE MENU BUTTON */
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #d4af37;
-      font-size: 30px;
-      cursor: pointer;
-    }
+.hero{min-height:100vh;padding:130px 25px 70px;display:flex;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.92)),url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1400&q=80");background-size:cover;background-position:center}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 130px 25px 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+.hero-content{max-width:760px;animation:fadeUp 1s ease}
 
-      background:
-        linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.88)),
-        url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1400&q=80");
+.crown{color:#d4af37;font-size:55px;margin-bottom:5px}
 
-      background-size: cover;
-      background-position: center;
-    }
+.hero h1{color:#d4af37;font-size:clamp(45px,8vw,78px);letter-spacing:5px;line-height:1}
 
-    .hero-content {
-      max-width: 700px;
-    }
+.hero h2{font-size:25px;letter-spacing:4px;margin:15px 0}
 
-    .crown {
-      font-size: 55px;
-    }
+.hero p{color:#ddd;max-width:600px;margin:0 auto 30px}
 
-    .hero h1 {
-      color: #d4af37;
-      font-size: 55px;
-    }
+.btn{display:inline-block;padding:14px 27px;border-radius:30px;background:#d4af37;color:#080808;text-decoration:none;font-weight:bold;border:none;cursor:pointer;transition:.3s}
 
-    .hero h2 {
-      font-size: 24px;
-      margin: 10px 0;
-    }
+.btn:hover{background:white;transform:translateY(-3px);box-shadow:0 10px 25px rgba(212,175,55,.2)}
 
-    .hero p {
-      color: #ddd;
-      margin-bottom: 30px;
-    }
+section{max-width:1100px;margin:auto;padding:90px 20px}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 30px;
-      background: #d4af37;
-      color: #080808;
-      text-decoration: none;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: .3s;
-    }
+.section-title{text-align:center;color:#d4af37;font-size:34px;margin-bottom:45px}
 
-    .btn:hover {
-      background: white;
-      transform: translateY(-2px);
-    }
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 
-    /* SECTIONS */
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
-    }
+.card{background:#151515;padding:32px 20px;border-radius:15px;text-align:center;border:1px solid #292929;transition:.35s}
 
-    .section-title {
-      text-align: center;
-      color: #d4af37;
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
+.card:hover{transform:translateY(-8px);border-color:#d4af37;box-shadow:0 12px 35px rgba(0,0,0,.4)}
 
-    /* SERVICES */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.icon{font-size:35px}
 
-    .card {
-      background: #151515;
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid #292929;
-      transition: .3s;
-    }
+.card h3{margin:12px 0 8px}
 
-    .card:hover {
-      transform: translateY(-7px);
-      border-color: #d4af37;
-    }
+.price{color:#d4af37;font-size:22px;font-weight:bold;margin-top:12px}
 
-    .icon {
-      font-size: 35px;
-    }
+.booking{background:#111;border:1px solid #292929;border-radius:20px;padding:30px;max-width:650px;margin:auto;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 
-    .card h3 {
-      margin: 12px 0 8px;
-    }
+.booking label{display:block;margin-top:18px;margin-bottom:6px;color:#ddd}
 
-    .price {
-      color: #d4af37;
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 12px;
-    }
+.booking input,.booking select{width:100%;padding:14px;border-radius:8px;border:1px solid #444;background:#080808;color:white;font-size:16px}
 
-    /* BOOKING */
-    .booking {
-      background: #111;
-      border: 1px solid #292929;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 650px;
-      margin: auto;
-    }
+.booking input:focus,.booking select:focus{outline:none;border-color:#d4af37}
 
-    .booking label {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      color: #ddd;
-    }
+.booking .btn{width:100%;margin-top:25px}
 
-    .booking input,
-    .booking select {
-      width: 100%;
-      padding: 14px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #080808;
-      color: white;
-      font-size: 16px;
-    }
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
 
-    .booking input:focus,
-    .booking select:focus {
-      outline: none;
-      border-color: #d4af37;
-    }
+.gallery img{width:100%;height:240px;object-fit:cover;border-radius:12px;cursor:pointer;transition:.35s}
 
-    .booking .btn {
-      width: 100%;
-      margin-top: 25px;
-    }
+.gallery img:hover{transform:scale(1.03);filter:brightness(1.15)}
 
-    /* GALLERY */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-    }
+.modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.94);justify-content:center;align-items:center;padding:20px}
 
-    .gallery img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: .3s;
-    }
+.modal img{max-width:95%;max-height:85vh;border-radius:12px}
 
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
+.close-modal{position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer}
 
-    /* REVIEWS */
-    .reviews {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 
-    .review {
-      background: #151515;
-      padding: 25px;
-      border-radius: 15px;
-    }
+.review{background:#151515;padding:25px;border-radius:15px;border:1px solid #222}
 
-    .stars {
-      color: #d4af37;
-      margin-bottom: 10px;
-    }
+.stars{color:#d4af37;margin-bottom:10px}
 
-    /* CONTACT */
-    .contact {
-      text-align: center;
-    }
+.location-box{overflow:hidden;border-radius:18px;border:1px solid #292929;background:#111}
 
-    .contact p {
-      margin: 8px;
-      color: #ccc;
-    }
+.location-box iframe{width:100%;height:350px;border:0;display:block}
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #111;
-      color: #888;
-    }
+.location-info{text-align:center;padding:25px}
 
-    /* WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-decoration: none;
-      font-size: 27px;
-      z-index: 999;
-    }
+.contact{text-align:center}
 
-    /* MOBILE */
-    @media (max-width: 600px) {
+.contact p{margin:8px;color:#ccc}
 
-      header {
-        padding: 15px 20px;
-      }
+footer{text-align:center;padding:30px;background:#111;color:#888}
 
-      .logo {
-        font-size: 20px;
-      }
+.whatsapp{position:fixed;right:20px;bottom:20px;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;justify-content:center;align-items:center;color:white;text-decoration:none;font-size:27px;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.4);transition:.3s}
 
-      .menu-btn {
-        display: block;
-      }
+.whatsapp:hover{transform:scale(1.1)}
 
-      nav {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #080808;
-        border-bottom: 1px solid #d4af37;
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}
 
-        display: none;
-        flex-direction: column;
-        text-align: center;
-        padding: 10px 0;
-      }
+.reveal.show{opacity:1;transform:translateY(0)}
 
-      nav.active {
-        display: flex;
-      }
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
 
-      nav a {
-        width: 100%;
-        padding: 14px;
-        margin: 0;
-        font-size: 15px;
-      }
+@media(max-width:600px){
 
-      .hero h1 {
-        font-size: 42px;
-      }
+header{padding:14px 20px}
 
-      .hero h2 {
-        font-size: 20px;
-      }
+.logo{font-size:19px}
 
-      .hero p {
-        font-size: 15px;
-      }
+.menu-btn{display:block}
 
-      .booking {
-        padding: 20px;
-      }
+nav{position:absolute;top:67px;left:0;width:100%;background:#080808;border-bottom:1px solid #d4af37;display:none;flex-direction:column;text-align:center;padding:10px 0}
 
-      .section-title {
-        font-size: 28px;
-      }
-    }
-  </style>
+nav.active{display:flex}
+
+nav a{width:100%;padding:14px;margin:0}
+
+.hero{min-height:90vh}
+
+.hero h1{font-size:43px}
+
+.hero h2{font-size:19px;letter-spacing:2px}
+
+section{padding:70px 18px}
+
+.section-title{font-size:28px}
+
+.booking{padding:20px}
+
+.gallery img{height:200px}
+
+.location-box iframe{height:280px}
+
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
+<header>
 
-    <div class="logo">KING CUT</div>
+<div class="logo">
+<div class="logo-mark">K</div>
+KING CUT
+</div>
 
-    <nav id="navMenu">
-      <a href="#home" onclick="closeMenu()">Home</a>
-      <a href="#services" onclick="closeMenu()">Services</a>
-      <a href="#booking" onclick="closeMenu()">Book</a>
-      <a href="#gallery" onclick="closeMenu()">Gallery</a>
-      <a href="#contact" onclick="closeMenu()">Contact</a>
-    </nav>
+<nav id="navMenu">
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#services" onclick="closeMenu()">Services</a>
+<a href="#booking" onclick="closeMenu()">Book</a>
+<a href="#gallery" onclick="closeMenu()">Gallery</a>
+<a href="#location" onclick="closeMenu()">Location</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+</nav>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-  </header>
+</header>
 
+<section class="hero" id="home">
 
-  <!-- HERO -->
-  <section class="hero" id="home">
+<div class="hero-content">
 
-    <div class="hero-content">
+<div class="crown">♛</div>
 
-      <div class="crown">👑</div>
+<h1>KING CUT</h1>
 
-      <h1>KING CUT</h1>
+<h2>RULE YOUR LOOK.</h2>
 
-      <h2>RULE YOUR LOOK.</h2>
+<p>
+Premium barbering for men and boys.
+Sharp cuts. Clean fades. Royal confidence.
+</p>
 
-      <p>
-        Premium barbering for men and boys.
-        Sharp cuts. Clean fades. Royal confidence.
-      </p>
+<a class="btn" href="#booking">
+BOOK YOUR CUT
+</a>
 
-      <a class="btn" href="#booking">
-        BOOK YOUR CUT
-      </a>
+</div>
 
-    </div>
+</section>
 
-  </section>
+<section id="services" class="reveal">
 
+<h2 class="section-title">OUR SERVICES</h2>
 
-  <!-- SERVICES -->
-  <section id="services">
+<div class="services">
 
-    <h2 class="section-title">OUR SERVICES</h2>
+<div class="card">
+<div class="icon">✂️</div>
+<h3>Classic Cut</h3>
+<p>Clean everyday haircut.</p>
+<div class="price">₦2,000</div>
+</div>
 
-    <div class="services">
+<div class="card">
+<div class="icon">🔥</div>
+<h3>Premium Fade</h3>
+<p>Sharp professional fade.</p>
+<div class="price">₦3,000</div>
+</div>
 
-      <div class="card">
-        <div class="icon">✂️</div>
-        <h3>Classic Cut</h3>
-        <p>Clean everyday haircut.</p>
-        <div class="price">₦2,000</div>
-      </div>
+<div class="card">
+<div class="icon">♛</div>
+<h3>King's Package</h3>
+<p>Haircut + beard + styling.</p>
+<div class="price">₦5,000</div>
+</div>
 
-      <div class="card">
-        <div class="icon">🔥</div>
-        <h3>Premium Fade</h3>
-        <p>Sharp professional fade.</p>
-        <div class="price">₦3,000</div>
-      </div>
+<div class="card">
+<div class="icon">🧔</div>
+<h3>Beard Grooming</h3>
+<p>Professional beard styling.</p>
+<div class="price">₦2,000</div>
+</div>
 
-      <div class="card">
-        <div class="icon">👑</div>
-        <h3>King's Package</h3>
-        <p>Haircut + beard + styling.</p>
-        <div class="price">₦5,000</div>
-      </div>
+</div>
 
-      <div class="card">
-        <div class="icon">🧔</div>
-        <h3>Beard Grooming</h3>
-        <p>Professional beard styling.</p>
-        <div class="price">₦2,000</div>
-      </div>
+</section>
 
-    </div>
+<section id="booking" class="reveal">
 
-  </section>
+<h2 class="section-title">BOOK AN APPOINTMENT</h2>
 
+<div class="booking">
 
-  <!-- BOOKING -->
-  <section id="booking">
+<label for="name">Your Name</label>
 
-    <h2 class="section-title">BOOK AN APPOINTMENT</h2>
+<input type="text" id="name" placeholder="Enter your name">
 
-    <div class="booking">
+<label for="service">Choose Service</label>
 
-      <label for="name">Your Name</label>
+<select id="service">
 
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your name"
-      >
+<option value="">Select a service</option>
 
+<option value="Classic Cut - ₦2,000">
+Classic Cut - ₦2,000
+</option>
 
-      <label for="service">Choose Service</label>
+<option value="Premium Fade - ₦3,000">
+Premium Fade - ₦3,000
+</option>
 
-      <select id="service">
+<option value="King's Package - ₦5,000">
+King's Package - ₦5,000
+</option>
 
-        <option value="">Select a service</option>
+<option value="Beard Grooming - ₦2,000">
+Beard Grooming - ₦2,000
+</option>
 
-        <option value="Classic Cut - ₦2,000">
-          Classic Cut - ₦2,000
-        </option>
+</select>
 
-        <option value="Premium Fade - ₦3,000">
-          Premium Fade - ₦3,000
-        </option>
+<label for="date">Preferred Date</label>
 
-        <option value="King's Package - ₦5,000">
-          King's Package - ₦5,000
-        </option>
+<input type="date" id="date">
 
-        <option value="Beard Grooming - ₦2,000">
-          Beard Grooming - ₦2,000
-        </option>
+<label for="time">Preferred Time</label>
 
-      </select>
+<input type="time" id="time">
 
+<button class="btn" onclick="bookAppointment()">
+💬 BOOK ON WHATSAPP
+</button>
 
-      <label for="date">Preferred Date</label>
+</div>
 
-      <input
-        type="date"
-        id="date"
-      >
+</section>
 
+<section id="gallery" class="reveal">
 
-      <label for="time">Preferred Time</label>
+<h2 class="section-title">OUR WORK</h2>
 
-      <input
-        type="time"
-        id="time"
-      >
+<div class="gallery">
 
+<img
+src="https://images.unsplash.com/photo-1599351431202-1e0f0d0e8f0d?auto=format&fit=crop&w=800&q=80"
+alt="Barber haircut"
+onclick="openImage(this.src)"
+>
 
-      <button class="btn" onclick="bookAppointment()">
-        💬 BOOK ON WHATSAPP
-      </button>
+<img
+src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80"
+alt="Fresh haircut"
+onclick="openImage(this.src)"
+>
 
-    </div>
+<img
+src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80"
+alt="Barber shop"
+onclick="openImage(this.src)"
+>
 
-  </section>
+</div>
 
+</section>
 
-  <!-- GALLERY -->
-  <section id="gallery">
+<div class="modal" id="imageModal" onclick="closeImage()">
 
-    <h2 class="section-title">OUR WORK</h2>
+<span class="close-modal">&times;</span>
 
-    <div class="gallery">
+<img id="modalImage" src="" alt="Full size haircut">
 
-      <img
-        src="https://images.unsplash.com/photo-1599351431202-1e0f0d0e8f0d?auto=format&fit=crop&w=600&q=80"
-        alt="Barber haircut"
-      >
+</div>
 
-      <img
-        src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80"
-        alt="Fresh haircut"
-      >
+<section class="reveal">
 
-      <img
-        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80"
-        alt="Barber shop"
-      >
+<h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
 
-    </div>
+<div class="reviews">
 
-  </section>
+<div class="review">
 
+<div class="stars">★★★★★</div>
 
-  <!-- REVIEWS -->
-  <section>
+<p>
+"Best fade I've gotten. Definitely coming back."
+</p>
 
-    <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+<br>
 
-    <div class="reviews">
+<strong>— Daniel</strong>
 
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>
-          "Best fade I've gotten. Definitely coming back."
-        </p>
-        <br>
-        <strong>— Daniel</strong>
-      </div>
+</div>
 
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>
-          "Clean environment and professional barber."
-        </p>
-        <br>
-        <strong>— Michael</strong>
-      </div>
+<div class="review">
 
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>
-          "King Cut really lives up to the name."
-        </p>
-        <br>
-        <strong>— David</strong>
-      </div>
+<div class="stars">★★★★★</div>
 
-    </div>
+<p>
+"Clean environment and professional barber."
+</p>
 
-  </section>
+<br>
 
+<strong>— Michael</strong>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
+</div>
 
-    <h2 class="section-title">CONTACT KING CUT</h2>
+<div class="review">
 
-    <p>📍 Abuja, Nigeria</p>
+<div class="stars">★★★★★</div>
 
-    <p>📞 0801 234 5678</p>
+<p>
+"King Cut really lives up to the name."
+</p>
 
-    <p>🕐 Monday – Saturday: 9AM – 8PM</p>
+<br>
 
-    <br>
+<strong>— David</strong>
 
-    <a class="btn" href="#booking">
-      BOOK APPOINTMENT
-    </a>
+</div>
 
-  </section>
+</div>
 
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 King Cut Barber Shop
-  </footer>
+<section id="location" class="reveal">
 
+<h2 class="section-title">FIND KING CUT</h2>
 
-  <!-- FLOATING WHATSAPP -->
-  <a
-    class="whatsapp"
-    href="https://wa.me/2348012345678"
-    target="_blank"
-  >
-    💬
-  </a>
+<div class="location-box">
 
+<iframe
+src="https://www.google.com/maps?q=Abuja,Nigeria&output=embed"
+loading="lazy"
+allowfullscreen>
+</iframe>
 
-  <!-- JAVASCRIPT -->
-  <script>
+<div class="location-info">
 
-    /* MOBILE MENU */
+<p>📍 Abuja, Nigeria</p>
 
-    function toggleMenu() {
+<br>
 
-      const menu = document.getElementById("navMenu");
+<a
+class="btn"
+href="https://www.google.com/maps/search/?api=1&query=Abuja,Nigeria"
+target="_blank">
+OPEN IN GOOGLE MAPS
+</a>
 
-      menu.classList.toggle("active");
+</div>
 
-    }
+</div>
 
+</section>
 
-    function closeMenu() {
+<section id="contact" class="contact reveal">
 
-      const menu = document.getElementById("navMenu");
+<h2 class="section-title">CONTACT KING CUT</h2>
 
-      menu.classList.remove("active");
+<p>📍 Abuja, Nigeria</p>
 
-    }
+<p>📞 0801 234 5678</p>
 
+<p>🕐 Monday – Saturday: 9AM – 8PM</p>
 
-    /* BOOKING */
+<br>
 
-    function bookAppointment() {
+<a class="btn" href="#booking">
+BOOK APPOINTMENT
+</a>
 
-      const name =
-        document.getElementById("name").value.trim();
+</section>
 
-      const service =
-        document.getElementById("service").value;
+<footer>
+© 2026 King Cut Barber Shop
+</footer>
 
-      const date =
-        document.getElementById("date").value;
+<a
+class="whatsapp"
+href="https://wa.me/2348012345678"
+target="_blank"
+aria-label="Chat on WhatsApp">
+💬
+</a>
 
-      const time =
-        document.getElementById("time").value;
+<script>
 
+function toggleMenu(){
 
-      if (!name || !service || !date || !time) {
+const menu=document.getElementById("navMenu");
 
-        alert("Please fill in all booking details.");
+menu.classList.toggle("active");
 
-        return;
+}
 
-      }
+function closeMenu(){
 
+const menu=document.getElementById("navMenu");
 
-      const message =
-        "Hello King Cut! 👑\n\n" +
-        "I would like to book an appointment.\n\n" +
-        "Name: " + name + "\n" +
-        "Service: " + service + "\n" +
-        "Date: " + date + "\n" +
-        "Time: " + time;
+menu.classList.remove("active");
 
+}
 
-      const whatsappURL =
-        "https://wa.me/2348012345678?text=" +
-        encodeURIComponent(message);
+const dateInput=document.getElementById("date");
 
+const today=new Date().toISOString().split("T")[0];
 
-      window.open(whatsappURL, "_blank");
+dateInput.min=today;
 
-    }
+function bookAppointment(){
 
-  </script>
+const name=document.getElementById("name").value.trim();
+
+const service=document.getElementById("service").value;
+
+const date=document.getElementById("date").value;
+
+const time=document.getElementById("time").value;
+
+if(!name||!service||!date||!time){
+
+alert("Please fill in all booking details.");
+
+return;
+
+}
+
+const message=
+"Hello King Cut! 👑\n\n"+
+"I would like to book an appointment.\n\n"+
+"Name: "+name+"\n"+
+"Service: "+service+"\n"+
+"Date: "+date+"\n"+
+"Time: "+time;
+
+const whatsappURL=
+"https://wa.me/2348012345678?text="+
+encodeURIComponent(message);
+
+window.open(whatsappURL,"_blank");
+
+}
+
+function openImage(src){
+
+const modal=document.getElementById("imageModal");
+
+const image=document.getElementById("modalImage");
+
+image.src=src;
+
+modal.style.display="flex";
+
+}
+
+function closeImage(){
+
+document.getElementById("imageModal").style.display="none";
+
+}
+
+const revealElements=document.querySelectorAll(".reveal");
+
+const observer=new IntersectionObserver(
+
+function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{threshold:.15}
+
+);
+
+revealElements.forEach(function(element){
+
+observer.observe(element);
+
+});
+
+</script>
 
 </body>
 </html>
