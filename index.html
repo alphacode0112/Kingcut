@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>King Cut | Premium Barber Shop</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 25px;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #d4af37;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #d4af37;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    /* MOBILE MENU BUTTON */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #d4af37;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 25px 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      background:
+        linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1400&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .crown {
+      font-size: 55px;
+    }
+
+    .hero h1 {
+      color: #d4af37;
+      font-size: 55px;
+    }
+
+    .hero h2 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .hero p {
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 30px;
+      background: #d4af37;
+      color: #080808;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #d4af37;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #151515;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid #292929;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #d4af37;
+    }
+
+    .icon {
+      font-size: 35px;
+    }
+
+    .card h3 {
+      margin: 12px 0 8px;
+    }
+
+    .price {
+      color: #d4af37;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    /* BOOKING */
+    .booking {
+      background: #111;
+      border: 1px solid #292929;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .booking label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #ddd;
+    }
+
+    .booking input,
+    .booking select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #080808;
+      color: white;
+      font-size: 16px;
+    }
+
+    .booking input:focus,
+    .booking select:focus {
+      outline: none;
+      border-color: #d4af37;
+    }
+
+    .booking .btn {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: .3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* REVIEWS */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .review {
+      background: #151515;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .stars {
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 8px;
+      color: #ccc;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #888;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 27px;
+      z-index: 999;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+
+      header {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #080808;
+        border-bottom: 1px solid #d4af37;
+
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        width: 100%;
+        padding: 14px;
+        margin: 0;
+        font-size: 15px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .booking {
+        padding: 20px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo">KING CUT</div>
+
+    <nav id="navMenu">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#booking" onclick="closeMenu()">Book</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </nav>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="crown">👑</div>
+
+      <h1>KING CUT</h1>
+
+      <h2>RULE YOUR LOOK.</h2>
+
+      <p>
+        Premium barbering for men and boys.
+        Sharp cuts. Clean fades. Royal confidence.
+      </p>
+
+      <a class="btn" href="#booking">
+        BOOK YOUR CUT
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section id="services">
+
+    <h2 class="section-title">OUR SERVICES</h2>
+
+    <div class="services">
+
+      <div class="card">
+        <div class="icon">✂️</div>
+        <h3>Classic Cut</h3>
+        <p>Clean everyday haircut.</p>
+        <div class="price">₦2,000</div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Premium Fade</h3>
+        <p>Sharp professional fade.</p>
+        <div class="price">₦3,000</div>
+      </div>
+
+      <div class="card">
+        <div class="icon">👑</div>
+        <h3>King's Package</h3>
+        <p>Haircut + beard + styling.</p>
+        <div class="price">₦5,000</div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧔</div>
+        <h3>Beard Grooming</h3>
+        <p>Professional beard styling.</p>
+        <div class="price">₦2,000</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOOKING -->
+  <section id="booking">
+
+    <h2 class="section-title">BOOK AN APPOINTMENT</h2>
+
+    <div class="booking">
+
+      <label for="name">Your Name</label>
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+      >
+
+
+      <label for="service">Choose Service</label>
+
+      <select id="service">
+
+        <option value="">Select a service</option>
+
+        <option value="Classic Cut - ₦2,000">
+          Classic Cut - ₦2,000
+        </option>
+
+        <option value="Premium Fade - ₦3,000">
+          Premium Fade - ₦3,000
+        </option>
+
+        <option value="King's Package - ₦5,000">
+          King's Package - ₦5,000
+        </option>
+
+        <option value="Beard Grooming - ₦2,000">
+          Beard Grooming - ₦2,000
+        </option>
+
+      </select>
+
+
+      <label for="date">Preferred Date</label>
+
+      <input
+        type="date"
+        id="date"
+      >
+
+
+      <label for="time">Preferred Time</label>
+
+      <input
+        type="time"
+        id="time"
+      >
+
+
+      <button class="btn" onclick="bookAppointment()">
+        💬 BOOK ON WHATSAPP
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+  <section id="gallery">
+
+    <h2 class="section-title">OUR WORK</h2>
+
+    <div class="gallery">
+
+      <img
+        src="https://images.unsplash.com/photo-1599351431202-1e0f0d0e8f0d?auto=format&fit=crop&w=600&q=80"
+        alt="Barber haircut"
+      >
+
+      <img
+        src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80"
+        alt="Fresh haircut"
+      >
+
+      <img
+        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80"
+        alt="Barber shop"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- REVIEWS -->
+  <section>
+
+    <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+
+    <div class="reviews">
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Best fade I've gotten. Definitely coming back."
+        </p>
+        <br>
+        <strong>— Daniel</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "Clean environment and professional barber."
+        </p>
+        <br>
+        <strong>— Michael</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          "King Cut really lives up to the name."
+        </p>
+        <br>
+        <strong>— David</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+
+    <h2 class="section-title">CONTACT KING CUT</h2>
+
+    <p>📍 Abuja, Nigeria</p>
+
+    <p>📞 0801 234 5678</p>
+
+    <p>🕐 Monday – Saturday: 9AM – 8PM</p>
+
+    <br>
+
+    <a class="btn" href="#booking">
+      BOOK APPOINTMENT
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 King Cut Barber Shop
+  </footer>
+
+
+  <!-- FLOATING WHATSAPP -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/2348012345678"
+    target="_blank"
+  >
+    💬
+  </a>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    /* MOBILE MENU */
+
+    function toggleMenu() {
+
+      const menu = document.getElementById("navMenu");
+
+      menu.classList.toggle("active");
+
+    }
+
+
+    function closeMenu() {
+
+      const menu = document.getElementById("navMenu");
+
+      menu.classList.remove("active");
+
+    }
+
+
+    /* BOOKING */
+
+    function bookAppointment() {
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const service =
+        document.getElementById("service").value;
+
+      const date =
+        document.getElementById("date").value;
+
+      const time =
+        document.getElementById("time").value;
+
+
+      if (!name || !service || !date || !time) {
+
+        alert("Please fill in all booking details.");
+
+        return;
+
+      }
+
+
+      const message =
+        "Hello King Cut! 👑\n\n" +
+        "I would like to book an appointment.\n\n" +
+        "Name: " + name + "\n" +
+        "Service: " + service + "\n" +
+        "Date: " + date + "\n" +
+        "Time: " + time;
+
+
+      const whatsappURL =
+        "https://wa.me/2348012345678?text=" +
+        encodeURIComponent(message);
+
+
+      window.open(whatsappURL, "_blank");
+
+    }
+
+  </script>
+
+</body>
+</html>
